@@ -1,0 +1,48 @@
+<html>
+    hi {{request.user.username}}
+    <br>
+    <a href="{% url 'approve' %}"> Approve Users</a>
+    <br>
+    <a href="{% url 'add_task' %}"> Add Task </a>
+    <br>
+    <button ><a href="{% url 'logout' %}" style="text-decoration: none;">Logout</a></button>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>#</th>
+            <th>
+                Name
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+        {% for i in users %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.firstname}} {{i.lastname}}</td>
+            {%if i.user_status == True %}
+                <td>Approved</td>
+            {% else %}
+                <td>Unapproved</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+<hr>
+    <table border="1">
+        <tr>
+            <th>#</th>
+            <th>Question</th>
+            <th>Answer</th>
+        </tr>
+        {% for i in tasks %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.question}}</td>
+            <td>{{i.answer}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</html>

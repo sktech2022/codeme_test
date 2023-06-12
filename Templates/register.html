@@ -1,0 +1,21 @@
+<div>
+    <form  method="POST">
+        {% csrf_token %}
+        <input type="text" name="firstname" placeholder="Firstname:" required>
+        <br>
+        <input type="text" name="lastname" placeholder="Lastname:" required>
+        <br>
+        <input type="text" name="course" placeholder="Course:" required>
+        <br>
+        <input type="text" name="username" placeholder="Username:">
+        <br>
+        <input type="email" name="email" placeholder="Email_ID:">
+        <br>
+        <input type="password" name="password1" placeholder="Password:">
+        <br>
+        <input type="text" name="password2" placeholder="Confirm Password:">
+        <br>
+        <input type="submit" value="Register">
+    </form>
+    <a href="{% url 'all_login' %}">I already have a membership</a>
+</div>

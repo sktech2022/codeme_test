@@ -1,0 +1,19 @@
+<div>
+    <form  method="POST">
+        {% csrf_token %}
+        <input type="text" name="question" placeholder="Question:" required>
+        <br>
+        <input type="text" name="option1" placeholder="option1:" required>
+        <br>
+        <input type="text" name="option2" placeholder="option2:" required>
+        <br>
+        <input type="text" name="option3" placeholder="option3:">
+        <br>
+        <input type="text" name="option4" placeholder="option4:">
+        <br>
+        <input type="text" name="answer" placeholder="Answer:">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+</div>

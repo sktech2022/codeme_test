@@ -1,0 +1,13 @@
+{% for user in unapproved %}
+    <div>
+        <h3>{{forloop.counter}}. {{ request.user.username }}</h3>
+        <p>{{user.firstname}} {{user.lastname}}</p>
+        <p>{{user.course}}</p>
+        <form method="post" alt="">
+            {% csrf_token %}
+            <input type="hidden" name="approve" value="{{ user.id }}">
+            <button type="submit">Approve</button>
+        </form>
+    </div>
+    <hr>
+{% endfor %}
