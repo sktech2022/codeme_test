@@ -1,0 +1,22 @@
+<div style="text-align: center;">
+    <h2>Edit Task</h2>
+    <hr>
+    <form  method="POST">
+        {% csrf_token %}
+        
+        <input type="text" name="question" placeholder="{{task.question}}" >
+        <br><br>
+        <input type="text" name="option1" placeholder="{{task.option1}}" >
+        <br><br>
+        <input type="text" name="option2" placeholder="{{task.option2}}" >
+        <br><br>
+        <input type="text" name="option3" placeholder="{{task.option3}}" >
+        <br><br>
+        <input type="text" name="option4" placeholder="{{task.option4}}" >
+        <br><br>
+        <input type="text" name="answer" placeholder="{{task.answer}}" >
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+</div>

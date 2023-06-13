@@ -2,18 +2,22 @@
 <form  method="POST">
     {% csrf_token %}
     <h2>Task</h2>
+    <hr>
     {% for i in tasks %}
-    <label >{{ forloop.counter }} .</label>
-    <p>{{i.question}}</p>
+    <h3>{{ forloop.counter }}) {{i.question}}</h3>
         <input type="radio" name="answer_{{i.id}}" value="{{i.option1}}">
-        <label >{{i.option1}}</label><br>
+        <label >{{i.option1}}</label>
         <input type="radio" name="answer_{{i.id}}" value="{{i.option2}}">
-        <label >{{i.option2}}</label><br>
+        <label >{{i.option2}}</label>
         <input type="radio" name="answer_{{i.id}}" value="{{i.option3}}">
-        <label >{{i.option3}}</label><br>
+        <label >{{i.option3}}</label>
         <input type="radio" name="answer_{{i.id}}" value="{{i.option4}}">
-        <label >{{i.option4}}</label><br>
+        <label >{{i.option4}}</label>
+        <br>
+        <hr>
     {% endfor %}
+    <br>
+    <br>
         <input type="submit" value="Submit">
 </form>
    

@@ -1,5 +1,5 @@
 {% for user in unapproved %}
-    <div>
+    <div style="text-align: center;">
         <h3>{{forloop.counter}}. {{ request.user.username }}</h3>
         <p>{{user.firstname}} {{user.lastname}}</p>
         <p>{{user.course}}</p>

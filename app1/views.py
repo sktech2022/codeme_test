@@ -58,7 +58,8 @@ def user_register(request):
 
 def user_home(request):
     user=UserProfile.objects.get(fk_user=request.user)
-    # tasks=Task.objects.all()
+    results=Result.objects.filter(fk_user=request.user)
+   
     if not user.user_status:          
          return HttpResponseForbidden("Your account is not yet approved by the admin.")
     
@@ -66,14 +67,14 @@ def user_home(request):
 
     context={
         'user':userdetails,
-        # 'tasks':tasks
+        'results':results,
     }
     return render(request,'user_home.html',context)
 
 def admin_home(request):
     users=UserProfile.objects.all()
     tasks=Task.objects.all()
-    results=Result.objects.all()
+    results=Result.objects.all().order_by('-id')
     context={
         'users':users,
         'tasks':tasks,
@@ -112,6 +113,36 @@ def add_task(request):
         )
         return redirect('admin_home')
     return render(request,'add_task.html') 
+
+def edit_task(request,id):
+    task=Task.objects.get(id=id)
+    if request.method == 'POST':
+        question=request.POST.get('question')
+        option1=request.POST.get('option1')
+        option2=request.POST.get('option2')
+        option3=request.POST.get('option3')
+        option4=request.POST.get('option4')
+        answer=request.POST.get('answer')
+        if question:
+            task.question=question
+        if option1:
+            task.option1=option1
+        if option2:
+            task.option2=option2
+        if option3:
+            task.option3=option3
+        if option4:
+            task.option4=option4
+        if answer:
+            task.answer=answer
+        task.save()
+        return redirect ('admin_home')
+    return render (request,'edit_task.html',{'task':task})
+
+def delete_task(request,id):
+    task=Task.objects.get(id=id)
+    task.delete()
+    return redirect ('admin_home')
 
 def test(request):
     user=request.user

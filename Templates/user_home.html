@@ -1,7 +1,21 @@
 <html>
-    hi {{request.user.username}}
+    <h4>Hi {{request.user.username}} !!</h4>
     <button ><a href="{% url 'logout' %}" style="text-decoration: none;">Logout</a></button>
     <hr>
-    <a href="{% url 'test' %}">Test</a>
-    
+    <button ><a href="{% url 'test' %}" style="text-decoration: none;">Test</a></button>
+    <hr>
+    <table border="1" style="text-align: center;">
+        <tr>
+            <th>Appear for Exams</th>
+            <th>Scored Marks</th>
+            <th>Total Score</th>
+        </tr>
+        {% for i in results %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.mark}}</td>
+            <td>{{i.total}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </html>

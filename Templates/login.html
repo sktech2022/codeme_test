@@ -1,11 +1,14 @@
-<div>
+<div style="text-align: center;">
+    <h4>LOGIN</h4>
     <form method="POST">
     {% csrf_token %}
     <input type="text" name="username" placeholder="Username:">
     <br>
+    <br>
     <input type="password" name="password" placeholder="Password:">
+    <br>
     <br>
     <input type="submit" value="Login">
     </form>
-    <a href="{% url 'user_register' %}">For Register</a>
+    <a href="{% url 'user_register' %}">Register Here</a>
 </div>

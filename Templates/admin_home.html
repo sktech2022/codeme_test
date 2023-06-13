@@ -1,13 +1,11 @@
 <html>
-    Hi {{request.user.username}} !!
-    <br>
-    <a href="{% url 'approve' %}"> Approve Users</a>
-    <a href="{% url 'add_task' %}"> Add Task </a>
-    <br>
-    <br>
+    <h4> Hi {{request.user.username}} !!</h4>
+
+    <button><a href="{% url 'approve' %}" style="text-decoration: none;"> Approve Users</a></button>
+    <button><a href="{% url 'add_task' %}" style="text-decoration: none;"> Add Task </a></button>
     <button ><a href="{% url 'logout' %}" style="text-decoration: none;">Logout</a></button>
     <hr>
-    <table border="1">
+    <table border="1" style="text-align: center;">
         <tr>
             <th>#</th>
             <th>
@@ -30,22 +28,26 @@
         {% endfor %}
     </table>
 <hr>
-    <table border="1">
+    <table border="1" style="text-align: center;">
         <tr>
             <th>#</th>
             <th>Question</th>
             <th>Answer</th>
+            <th>Update</th>
+            <th>Remove</th>
         </tr>
         {% for i in tasks %}
         <tr>
             <td>{{forloop.counter}}</td>
             <td>{{i.question}}</td>
             <td>{{i.answer}}</td>
+            <td><a href="{% url 'edit_task' i.id %}">Edit</a></td>
+            <td><a href="{% url 'delete_task' i.id %}">Delete</a></td>
         </tr>
         {% endfor %}
     </table>
 <hr>
-    <table border="1">
+    <table border="1" style="text-align: center;">
         <tr>
             <th>#</th>
             <th>User</th>
