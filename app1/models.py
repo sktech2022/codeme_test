@@ -70,4 +70,9 @@ class Task(models.Model):
 class Exam(models.Model):
     fk_task=models.ForeignKey(Task,on_delete=models.CASCADE)
     fk_user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
-    answer=models.CharField(max_length=250)
+    answer=models.CharField(max_length=250,null=True)
+
+class Result(models.Model):
+    fk_user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    mark=models.CharField(max_length=50)
+    total=models.CharField(max_length=50)

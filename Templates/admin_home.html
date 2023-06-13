@@ -1,9 +1,9 @@
 <html>
-    hi {{request.user.username}}
+    Hi {{request.user.username}} !!
     <br>
     <a href="{% url 'approve' %}"> Approve Users</a>
-    <br>
     <a href="{% url 'add_task' %}"> Add Task </a>
+    <br>
     <br>
     <button ><a href="{% url 'logout' %}" style="text-decoration: none;">Logout</a></button>
     <hr>
@@ -41,6 +41,23 @@
             <td>{{forloop.counter}}</td>
             <td>{{i.question}}</td>
             <td>{{i.answer}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<hr>
+    <table border="1">
+        <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Scored Marks</th>
+            <th>Total Score</th>
+        </tr>
+        {% for i in results %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.fk_user}}</td>
+            <td>{{i.mark}}</td>
+            <td>{{i.total}}</td>
         </tr>
         {% endfor %}
     </table>

@@ -73,9 +73,11 @@ def user_home(request):
 def admin_home(request):
     users=UserProfile.objects.all()
     tasks=Task.objects.all()
+    results=Result.objects.all()
     context={
         'users':users,
-        'tasks':tasks
+        'tasks':tasks,
+        'results':results,
     }
     return render(request,'admin_home.html',context)
 
@@ -126,11 +128,20 @@ def test(request):
             )
             if answer == task.answer:
                 mark += 1.0
-                count +=1
+                count +=1.0
             else:
-                mark -= 0.25
-                count +=1
-        return redirect('complete', mark=str(mark),count=count)
+                if answer is None:
+                    mark += 0
+                    count += 1.0
+                else:
+                    mark -= 0.25
+                    count +=1.0
+        Result.objects.create(
+            fk_user=user,
+            mark=mark,
+            total=count,
+        )
+        return redirect('complete', mark=str(mark),count=str(count))
     return render (request,"test.html",{'tasks':tasks})
     
 def complete(request,mark,count):

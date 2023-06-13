@@ -10,5 +10,5 @@ urlpatterns = [
     path('approve/',admin_approve,name='approve'),
     path('add_task/',add_task,name='add_task'),
     path('test/',test,name='test'),
-    path('complete/<str:mark>/<int:count>/',complete,name='complete'),
+    path('complete/<str:mark>/<str:count>/',complete,name='complete'),
 ]
